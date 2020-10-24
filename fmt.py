@@ -75,16 +75,16 @@ class FMTPlanner():
         assert self.check_collision(goal, None)
 
         self.graph.remove_edges_from(list(self.graph.edges))
-        L = len(self.node_list)
-        for n_steps, node in zip([L, L + 1], [start, goal]):
+        start_id = len(self.node_list)
+        goal_id = start_id + 1
+        for n_steps, node in zip([start_id, goal_id], [start, goal]):
             self.graph.add_node(n_steps)
             self.node_list.append(node)
         node_tree = cKDTree(self.node_list)
         heuristic = [np.linalg.norm(x - goal) for x in self.node_list]
 
         # initialize
-        start_id = L
-        goal_id = L + 1
+        goal_flag = 0
         z = start_id
         V_open = pqdict({z: 0.})
         V_closed = list()
@@ -92,7 +92,6 @@ class FMTPlanner():
         V_unvisited.remove(z)
 
         # start search
-        goal_flag = 0
         for n_steps in range(self.max_search_iter):
             if z == goal_id:
                 print("Reached goal")
@@ -129,8 +128,10 @@ class FMTPlanner():
                 break
             z = V_open.top()
 
-        path = np.vstack(
-            [self.node_list[x] for x in nx.shortest_path(self.graph, L, z)])
+        path = np.vstack([
+            self.node_list[x]
+            for x in nx.shortest_path(self.graph, start_id, z)
+        ])
 
         return {
             "path": path,
