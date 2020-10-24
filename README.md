@@ -11,7 +11,7 @@ Python implementation of Fast Marching Tree (https://arxiv.org/abs/1306.3532)
 - See `requirements.txt` for full requirements
 
 ## How it works
-See `example.ipynb`.
+See [`example.ipynb`](https://github.com/yonetaniryo/fmt/blob/main/example.ipynb).
 
 ## Implementation note
 - Implementation of `check_collision` is based on [PythonRobotics](https://github.com/AtsushiSakai/PythonRobotics).
