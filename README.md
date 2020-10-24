@@ -1,5 +1,7 @@
 # FMT
 
+![result1](assets/result1.png) ![result2](assets/result2.png)
+
 Python implementation of Fast Marching Tree (https://arxiv.org/abs/1306.3532)
 
 ## Requirements
