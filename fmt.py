@@ -11,7 +11,7 @@ class FMTPlanner():
         self,
         map_design: np.ndarray,
         n_samples: int = 1000,
-        r_n: float = .0,
+        r_n: float = 20.0,
         path_resolution: float = 0.1,
         rr: float = 1.0,
         max_search_iter: int = 10000,

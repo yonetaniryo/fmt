@@ -5,7 +5,7 @@ from fmt import FMTPlanner
 import matplotlib.pyplot as plt
 
 
-def load_map_design(img_path: str, size=(64, 64)) -> np.ndarray:
+def load_map_design(img_path: str, size: list) -> np.ndarray:
     map_design = (np.asarray(Image.open(img_path).convert("L").resize(size)) /
                   255.).astype('int')
 
